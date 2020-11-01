@@ -52,19 +52,19 @@ public class LetterCombination {
         return result;
     }
 
-    private void combine(List<Integer> digits,String splict, int index, List<String> result) {
+    private void combine(List<Integer> digits, String letter, int index, List<String> result) {
         if (index == digits.size()) {
-            result.add(splict);
+            result.add(letter);
             return;
         }
 
         String letters = DIGITS_LETTER[digits.get(index)];
         if (letters.length() == 0) {
-            combine(digits, splict, index + 1, result);
+            combine(digits, letter, index + 1, result);
         }
 
-        for (char c : letters.toCharArray()) {
-            combine(digits, splict + c, index + 1, result);
+        for (char l : letters.toCharArray()) {
+            combine(digits, letter + l, index + 1, result);
         }
     }
 }
