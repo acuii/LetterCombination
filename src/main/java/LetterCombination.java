@@ -37,13 +37,17 @@ public class LetterCombination {
         if (null != digits && size != 0) {
             for (int i = 0; i < size; i++) {
                 Integer d = digits.get(i);
+                if (d < 0 || d > 99) {
+                    return result;
+                }
                 if (d > 9 && d <= 99) {
                     digits.remove(i);
                     digits.add(i,d/10);
                     digits.add(i+1,d%10);
+                    size = digits.size();
                 }
             }
-            combine(digits,"",  0, result);
+            combine(digits,"",0, result);
         }
         return result;
     }
